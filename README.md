@@ -9,7 +9,7 @@ Maahir Shah
 ## Overview
 This project was an experiment to explore how hackers develop malware in an effort to understand malware behaviour, structure and evasion techniques.
 
-I learned C and malware development practices in order to create this virus, which gave me an improved understanding of low-level programming and how it can be exploited for malicious purposes. 
+I learned C and malware development practices in order to create this virus, which gave me an improved understanding of low-level programming and and Windows Registry can be exploited for malicious purposes. 
 
 I am fascinated by Red Team operations and how malicious applications/individuals can stay hidden from security systems, leading me to pursue this project for a greater understanding.
 
@@ -26,8 +26,12 @@ This ensures that the virus is activated when the computer turns on for any user
 #### 2. Disable User Access Control (UAC)
 Disable UAC prevents Windows from opening the dialogue that confirms with the user whether they intend to elevate privileges. This allows for malicious programs to run silently without confirmed administrator approval.
 
+It does this by editing the values of "ConsentPromptBehaviorAdmin" from 5 to 0 and "EnableLUA" from 1 to 0 in the key path "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System".
+
 #### 3. Disable Installer Detection
 This prevents Windows from detecting and prompting for elevation when installing applications that require administrative privileges. This can be particularly useful when installing more malicious application in later phases of attack.
+
+It does this by editing the value of "EnableInstallerDetection" from 1 to 0 in the key path "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System".
 
 #### 4. Creating a New Administrative Use through Invoking CMD
 The C program for the virus utilises the system() function to execute CMD commands through the C program in a separate session. This allows the virus to execute CMD commands to create a new user with administrative privileges on the machine without notifying the user, allowing the attacker a privileged backdoor for future attack. This phase assumes the user being targeted has administrative privileges.
