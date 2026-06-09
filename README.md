@@ -1,4 +1,4 @@
-# Golden-Retriever-Test-Virus
+# Golden Retriever Virus
 My exploration into malware development using the C programming language - making a Trojan virus.
 
 **This project was for educational purposes only. I do not condone malware development in an effort to cause harm. This virus was not, and will not, be used as a tool of attack. I do not accept any liability for use and/or abuse of my virus code or any other part of my project by anyone else, apart from myself. If you intend to study this virus, do so legally and carefully and in an isolated, sandbox-style environment.**
