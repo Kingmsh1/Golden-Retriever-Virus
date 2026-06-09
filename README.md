@@ -42,7 +42,7 @@ The virus aims to evade suspicion by being concealed as an image file of a Golde
 ## Assumptions
 1. The user being targeted has administrative privileges (to allow for another admin user to be created in phase 4).
 2. The user being targeted doesn't have "Show File Extensions" enabled in their File Explorer (the majority of Windows users don't), which would increase the likelihood of suspicion.
-3. Windows Defender/AntiVirus is enabled and scanning.
+3. Windows Defender/AntiVirus is disabled and not scanning.
 
 ## Project Artefacts
 1. The virus itself called "goldenretriever.exe" within the Virus folder.
