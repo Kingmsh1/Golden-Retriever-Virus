@@ -44,3 +44,8 @@ The virus aims to evade suspicion by being concealed as an image file of a Golde
 2. The user being targeted doesn't have "Show File Extensions" enabled in their File Explorer (the majority of Windows users don't), which would increase the likelihood of suspicion.
 3. Windows Defender/AntiVirus is enabled and scanning.
 
+## Project Artefacts
+1. The virus itself called "goldenretriever.exe" within the Virus folder.
+2. The virus source code in C within the Virus folder.
+3. My personal notes on malware development in C made during my C learning journey. 
+
