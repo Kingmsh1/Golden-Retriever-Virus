@@ -72,7 +72,6 @@ To extend this malware dev project and understand how my virus would be detected
 - Detection Goal: detect addition of local accounts to the local administrators group for persistence with elevated privileges
 
 ***
-
 # Lessons
 Overall, my malware development project and learning to construct Sigma detection rules helped me understand:
 - how malware behaves
