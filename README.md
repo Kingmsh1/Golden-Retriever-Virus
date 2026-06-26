@@ -44,8 +44,45 @@ The virus aims to evade suspicion by being concealed as an image file of a Golde
 2. The user being targeted doesn't have "Show File Extensions" enabled in their File Explorer (the majority of Windows users don't), which would increase the likelihood of suspicion.
 3. Windows Defender/AntiVirus is disabled and not scanning.
 
+## Detection Engineering & Blue-Team Analysis
+To extend this malware dev project and understand how my virus would be detected in a real-world environment, I mapped its behaviour to techniques documented in the MITRE ATT&CK Framework. I then mapped each behaviour to Sysmon (more-detailed Windows system activity logger) Event IDs and used both mappings to write Sigma detection rules as YAML files to simulate SOC monitoring of malware behaviour.
+
+## Malware Behaviour -> MITRE ATT&CK Technique ID Mapping -> Sysmon Event ID Mapping -> Detection Goal
+### Persistence via Registry Run Key
+- TechniqueID: T1547.001 (Boot or Logon Autostart Execution: Registry Run Keys)
+- Sysmon EventIDs: 12 (Registry key creation), 13 (Registry value set)
+- Detection Goal: identify malware persistence via Run key modification to run on start-up
+### UAC Disabling 
+- TechniqueID: T1112 (Modify Registry)
+- Sysmon EventID: 13 (Registry value set)
+- Detection Goal: detect attempts to disable Windows security prompts by weakening UAC protection
+### Installer Detection Disabling
+- TechniqueID: T1112 (Modify Registry)
+- Sysmon EventID: 13 (Registry value set)
+- Detection Goal: detect attempts to disable Windows security prompts by suppressing Windows Installer elevation prompts
+### CMD Command Execution for Local Account Creation
+- TechniqueID: T1059.003 (Command and Scripting Interpreter: Windows Command Shell), T1136.001 (Create Local Account)
+- Sysmon EventID: 1 (Process Creation)
+- Detection Goal: detect usage of cmd.exe for local account creation for persistence
+### Privilege Escalation via Local Admin Group Modification
+- TechniqueID: T1059.003 (Command and Scripting Interpreter: Windows Command Shell), T1136.001 (Create Local Account)
+- Sysmon EventID: 1 (Process Creation)
+- Detection Goal: detect addition of local accounts to the local administrators group for persistence with elevated privileges
+
+## Lessons
+Overall, my malware development project and learning to construct Sigma detection rules helped me understand:
+- how malware behaves
+- why Windows Registry can be an important target for adversaries
+- defence evasion techniques
+- how WindowsOS can log activity
+- how malware behaviour can be translated into detection rules
+- MITRE ATT&CK framework mapping of malware behaviour
+- the importance of Sigma rules and Sigma's flexibility as a cross-platform detection engineering tool
+
 ## Project Artefacts
 1. The virus itself called "goldenretriever.exe" within the Virus folder.
 2. The virus source code in C within the Virus folder.
-3. My personal notes on malware development in C made during my C learning journey. 
+3. Sigma YAML rule files.
+4. My personal notes on malware development in C made during my C learning journey.
+5. My personal notes on the MITRE ATT&CK Framework, Sysmon and Sigma rule-writing.
 
