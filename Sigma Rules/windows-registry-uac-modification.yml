@@ -1,4 +1,4 @@
-title: Windows Registry UAC Disabling
+title: Windows Registry UAC Modification
 id: 24b9b130-d20a-4e55-8886-d6cb325811ed
 status: experimental
 description: Detects modification of the status of User Access Control, used by malware to silently escalate privileges for running applications 
@@ -16,10 +16,10 @@ detection:
     TargetObject|contains: '\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin'
   selection2:
     EventID: 13
-    TargetObject|contains: 'CurrentVersion\Policies\System\EnableLUA'
-  condition: selection1 and selection2
+    TargetObject|contains: '\CurrentVersion\Policies\System\EnableLUA'
+  condition: selection1 or selection2
 
-level: critical
+level: high
 
 tags:
   - attack.defence_evasion

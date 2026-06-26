@@ -1,0 +1,27 @@
+title: Windows CMD Invocation for Escalating Privileges of a New User for Persistence
+id: 8673dcc1-cce6-4791-9b44-0f79c0df45de
+status: experimental
+description: Detects invocation of CMD commands, used by malware to add a user to the local administrators group for persistence with elevated privileges
+author: Maahir Shah
+date: 2026-06-26
+modified: 2026-06-26
+
+logsource:
+  product: windows
+  service: sysmon
+
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\cmd.exe'
+    CommandLine|contains: 'net localgroup administrators'
+    CommandLine|contains: '/add'
+  condition: selection
+
+level: high
+
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1136.001
+  - attack.t1059.003

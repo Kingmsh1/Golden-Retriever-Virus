@@ -1,7 +1,7 @@
-title: Windows CMD Invocation for Persistence
+title: Windows CMD Invocation for Creating a New User for Persistence
 id: 233d0629-5624-4a8f-9c78-8363dd58323f
 status: experimental
-description: Detects invocation of CMD commands and processes, which may be used by malware to create new users for persistence 
+description: Detects invocation of CMD commands, used by malware to create new a new user for persistence 
 author: Maahir Shah
 date: 2026-06-26
 modified: 2026-06-26
@@ -14,9 +14,8 @@ detection:
   selection:
     EventID: 1
     Image|endswith: '\cmd.exe'
-    CommandLine|contains:
-      - 'net user'
-      - '/add'
+    CommandLine|contains: 'net user'
+    CommandLine|contains: '/add'
   condition: selection
 
 level: high
