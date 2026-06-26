@@ -1,0 +1,28 @@
+title: Windows CMD Invocation for Persistence
+id: 233d0629-5624-4a8f-9c78-8363dd58323f
+status: experimental
+description: Detects invocation of CMD commands and processes, which may be used by malware to create new users for persistence 
+author: Maahir Shah
+date: 2026-06-26
+modified: 2026-06-26
+
+logsource:
+  product: windows
+  service: sysmon
+
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\cmd.exe'
+    CommandLine|contains:
+      - 'net user'
+      - '/add'
+  condition: selection
+
+level: high
+
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1136.001
+  - attack.t1059.003

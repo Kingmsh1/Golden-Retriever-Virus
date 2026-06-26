@@ -1,0 +1,23 @@
+title: Windows Registry Installer Detection Disabling
+id: f02c30cd-fae4-4bc2-bd1f-2fe9b567df03
+status: experimental
+description: Detects attempts to disable Installer Detection in Registry, which would allow malware to install other applications without prompting the user for elevated privileges
+author: Maahir Shah
+date: 2026-06-26
+modified: 2026-06-26
+
+logsource:
+  product: windows
+  service: sysmon
+
+detection:
+  selection:
+    EventID: 13
+    TargetObject|contains: '\CurrentVersion\Policies\System\EnableInstallerDetection'
+  condition: selection
+
+level: high
+
+tags:
+  - attack.defence_evasion
+  - attack.t1112
