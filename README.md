@@ -73,7 +73,7 @@ To extend this malware dev project and understand how my virus would be detected
 
 ***
 
-## Lessons
+# Lessons
 Overall, my malware development project and learning to construct Sigma detection rules helped me understand:
 - how malware behaves
 - why Windows Registry can be an important target for adversaries
@@ -83,7 +83,7 @@ Overall, my malware development project and learning to construct Sigma detectio
 - MITRE ATT&CK framework mapping of malware behaviour
 - the importance of Sigma rules and Sigma's flexibility as a cross-platform detection engineering tool
 
-## Project Artefacts
+# Project Artefacts
 1. The virus itself called "goldenretriever.exe" within the Virus folder.
 2. The virus source code in C within the Virus folder.
 3. Sigma YAML rule files.
