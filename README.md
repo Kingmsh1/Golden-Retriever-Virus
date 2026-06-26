@@ -47,7 +47,9 @@ The virus aims to evade suspicion by being concealed as an image file of a Golde
 ## Detection Engineering & Blue-Team Analysis
 To extend this malware dev project and understand how my virus would be detected in a real-world environment, I mapped its behaviour to techniques documented in the MITRE ATT&CK Framework. I then mapped each behaviour to Sysmon (more-detailed Windows system activity logger) Event IDs and used both mappings to write Sigma detection rules as YAML files to simulate SOC monitoring of malware behaviour.
 
-## Malware Behaviour -> MITRE ATT&CK Technique ID Mapping -> Sysmon Event ID Mapping -> Detection Goal
+***
+
+## Golden Retriever Virus Behaviour -> MITRE ATT&CK Technique ID Mapping -> Sysmon Event ID Mapping -> Detection Goal
 ### Persistence via Registry Run Key
 - TechniqueID: T1547.001 (Boot or Logon Autostart Execution: Registry Run Keys)
 - Sysmon EventIDs: 12 (Registry key creation), 13 (Registry value set)
@@ -68,6 +70,8 @@ To extend this malware dev project and understand how my virus would be detected
 - TechniqueID: T1059.003 (Command and Scripting Interpreter: Windows Command Shell), T1136.001 (Create Local Account)
 - Sysmon EventID: 1 (Process Creation)
 - Detection Goal: detect addition of local accounts to the local administrators group for persistence with elevated privileges
+
+***
 
 ## Lessons
 Overall, my malware development project and learning to construct Sigma detection rules helped me understand:
