@@ -1,1 +1,27 @@
-fdfdfdfd
+title: Registry Runkey Persistence
+id: e3d99848-10af-410f-965e-5d227aea1854
+status: experimental
+description: Detects creation or modification of a value for a Registry Run Key, used for persistence by malware to execute on startup
+author: Maahir Shah
+date: 2026-06-26
+modified: 2026-06-26
+
+logsource:
+  product: windows
+  service: sysmon
+
+detection:
+  selection1:
+    EventID: 12
+    TargetObject|contains: '\CurrentVersion\Run'
+  selection2:
+    EventID: 13
+    TargetObject|contains: '\CurrentVersion\Run'
+  condition: selection1 or selection2
+
+level: high
+
+tags:
+  - attack.persistence
+  - attack.t1547.001
+
