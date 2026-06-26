@@ -49,7 +49,7 @@ To extend this malware dev project and understand how my virus would be detected
 
 ***
 
-## Golden Retriever Virus Behaviour -> MITRE ATT&CK Technique ID Mapping -> Sysmon Event ID Mapping -> Detection Goal
+# Golden Retriever Virus Behaviour -> MITRE ATT&CK Technique ID Mapping -> Sysmon Event ID Mapping -> Detection Goal
 ### Persistence via Registry Run Key
 - TechniqueID: T1547.001 (Boot or Logon Autostart Execution: Registry Run Keys)
 - Sysmon EventIDs: 12 (Registry key creation), 13 (Registry value set)
